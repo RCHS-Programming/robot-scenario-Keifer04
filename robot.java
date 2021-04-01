@@ -6,8 +6,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
+
 public class robot extends Actor
 {
+    private GreenfootImage robotimage1= new GreenfootImage("man01.png");
+    private GreenfootImage robotimage2= new GreenfootImage("man02.png");
     /**
      * Act - do whatever the robot wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -15,6 +18,9 @@ public class robot extends Actor
     public void act() 
     {
         // Add your action code here.
+        robotimage1 = new GreenfootImage ("man01.png");
+        robotimage2 = new GreenfootImage ("man02.png");
+        setImage (robotimage2);
         if (Greenfoot.isKeyDown("up"))
         {
             setLocation( getX(), getY() -3);
@@ -33,6 +39,7 @@ public class robot extends Actor
         }  
         detectWallCollision();
         eatPizza();
+        switchImage();
     }
 
 
@@ -58,6 +65,27 @@ public class robot extends Actor
         {
           Greenfoot.playSound("eat.wav");
           removeTouching(pizza.class);
+          
+          
+          
         }
     }
+    
+    public void house()
+    {
+        if (isTouching(house.class))
+        {
+            Greenfoot.stop();
+        }
+    }
+    public void switchImage()
+    {
+       {
+        if (getImage() == robotimage1)
+       {setImage (robotimage2);}
+       else
+       {setImage (robotimage1);}
+    }  
+    }
+    
 }

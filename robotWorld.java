@@ -36,5 +36,6 @@ public class robotWorld extends World
         addObject(new pizza(), 500, 500);
         addObject(new pizza(), 450, 300);
         addObject(new block(), 450, 300);
+        addObject(new score(), 700, 100);
     }
 }
