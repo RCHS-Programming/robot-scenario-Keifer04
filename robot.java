@@ -11,6 +11,8 @@ public class robot extends Actor
 {
     private GreenfootImage robotimage1= new GreenfootImage("man01.png");
     private GreenfootImage robotimage2= new GreenfootImage("man02.png");
+    private int lives;
+    private int pizzaEaten;
     /**
      * Act - do whatever the robot wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -21,6 +23,9 @@ public class robot extends Actor
         robotimage1 = new GreenfootImage ("man01.png");
         robotimage2 = new GreenfootImage ("man02.png");
         setImage (robotimage2);
+        lives = 3;
+        pizzaEaten = 0;
+        
         if (Greenfoot.isKeyDown("up"))
         {
             setLocation( getX(), getY() -3);
@@ -40,6 +45,8 @@ public class robot extends Actor
         detectWallCollision();
         eatPizza();
         switchImage();
+        house();
+        showStatus();
     }
 
 
@@ -65,6 +72,7 @@ public class robot extends Actor
         {
           Greenfoot.playSound("eat.wav");
           removeTouching(pizza.class);
+          pizzaEaten = 0; 
           
           
           
@@ -88,4 +96,9 @@ public class robot extends Actor
     }  
     }
     
+    public void showStatus()
+    {
+        //getWorld().showText("lives : "+lives, 70,540);
+        //getWorld().showText("Pizza : "+pizzaEaten, 70, 560);
+    }
 }
