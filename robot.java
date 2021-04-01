@@ -32,6 +32,7 @@ public class robot extends Actor
             setLocation( getX() -3, getY() );
         }  
         detectWallCollision();
+        eatPizza();
     }
 
 
@@ -40,12 +41,23 @@ public class robot extends Actor
         if (isTouching(wall.class))
         {
             removeTouching(robot.class);
-            Greenfoot.stop();
+            Greenfoot.playSound("hurt.wav");
+            setLocation( 100, 100);
         }
                 if (isTouching(block.class))
         {
             removeTouching(robot.class);
-            Greenfoot.stop();
+            Greenfoot.playSound("hurt.wav");
+            setLocation(100, 100);
+        }
+    }
+    
+    public void eatPizza()
+    {
+        if (isTouching(pizza.class))
+        {
+          Greenfoot.playSound("eat.wav");
+          removeTouching(pizza.class);
         }
     }
 }
